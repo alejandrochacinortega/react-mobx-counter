@@ -1,13 +1,27 @@
 import React from 'react';
 import GithubStore from '../stores/GithubStore';
+import Error from './Error';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
 
-
+@observer
 class AddGithubProfile extends React.Component {
-  addProfile(event) {
+
+  @observable profileNotFound;
+
+  async addProfile(event) {
     event.preventDefault();
-    let name = this.refs.name.value;
+    let name             = this.refs.name.value;
     this.refs.name.value = "";
-    GithubStore.AddProfile(name)
+    try {
+      await GithubStore.AddProfile(name);
+      this.profileNotFound = "";
+
+    }
+    catch (error) {
+      // this.errorMessage = error;
+      this.profileNotFound = "Profile Nor found. Please try again.";
+    }
   }
 
   render() {
@@ -17,6 +31,7 @@ class AddGithubProfile extends React.Component {
           <input type="text" placeholder="Search for a github profile" ref="name"/>
           <button onClick={this.addProfile.bind(this)}>Add</button>
         </form>
+        <Error profileNotFound={this.profileNotFound} />
       </div>
     )
   }

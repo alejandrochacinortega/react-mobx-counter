@@ -27,7 +27,16 @@ class GithubStore {
   async   AddProfile(name) {
     let response = await fetch(`https://api.github.com/users/${name}`);
     let profile  = await response.json();
+    if (profile.message) {
+      throw Error(profile.message);
+    }
     this.profiles.push(new GithubModel(profile));
+  }
+
+  @action
+  onDelete(username) {
+    _.remove(this.profiles, profile => profile.login == username)
+
   }
 }
 

@@ -10,8 +10,8 @@ import TableHeader from './TableHeader';
 class Card extends React.Component {
   render() {
     let taskStyle = {
-      "font-family"    : "arial",
-      "border-collapse": "collapse",
+      "fontFamily"    : "arial",
+      "borderCollapse": "collapse",
       "width"          : "50%"
     };
     let profiles  = GithubStore.profiles;
