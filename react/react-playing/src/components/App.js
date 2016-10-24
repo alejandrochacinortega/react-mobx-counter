@@ -6,6 +6,8 @@ import Result from './Result';
 import Header from './Header';
 import Card from './Card';
 import AddGithubProfile from './AddGithubProfile';
+import Game from './Game';
+
 
 
 
@@ -25,6 +27,9 @@ class App extends React.Component {
         <Header title="Github Card Interface" />
         <AddGithubProfile />
         <Card />
+        <hr />
+        <Header title="Game Component" />
+        <Game />
       </div>
     )
   }

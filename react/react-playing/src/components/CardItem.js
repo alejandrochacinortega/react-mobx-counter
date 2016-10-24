@@ -16,22 +16,23 @@ class CardItem extends React.Component {
     };
 
     return (
-      <tr>
-        <td>
-          <img style={taskStyle} src={this.props.profile.avatar_url} alt=""/>
-        </td>
-        <td>
-          <h3>{this.props.profile.name}</h3>
-        </td>
-        <td>
-          <h3>{this.props.profile.login}</h3>
-        </td>
-        <td>
-          <button onClick={() => {
-            this.onDelete(this.props.profile.login)
-          }}>delete</button>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <img style={taskStyle} src={this.props.profile.avatar_url} alt=""/>
+          </td>
+          <td>
+            <h3>{this.props.profile.name}</h3>
+          </td>
+          <td>
+            <h3>{this.props.profile.login}</h3>
+          </td>
+          <td>
+            <button onClick={() => {
+              this.onDelete(this.props.profile.login)
+            }}>delete
+            </button>
+          </td>
+        </tr>
     )
   }
 }
